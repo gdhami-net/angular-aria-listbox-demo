@@ -1,0 +1,46 @@
+main {
+  max-width: 44rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+section {
+  margin: 2.5rem 0;
+}
+
+ul[ngListbox] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 14rem;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+li[ngOption] {
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+
+li[ngOption][data-active='true'] {
+  outline: 2px solid #0284c7;
+  outline-offset: -2px;
+}
+
+li[ngOption][aria-selected='true'] {
+  background: #e0f2fe;
+  font-weight: 600;
+}
+
+li[ngOption].mine {
+  border-left: 6px solid #f97316;
+}
+
+ul[ngListbox]:focus,
+li[ngOption]:focus {
+  outline: 2px solid #0284c7;
+  outline-offset: -2px;
+}

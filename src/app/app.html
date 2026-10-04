@@ -1,0 +1,35 @@
+<main>
+  <h1>Angular Aria listbox</h1>
+  <p>
+    Tab into a list, then use the arrow keys, Home, End, Enter or Space. None of these
+    components contain key handling of their own except where the heading says so.
+  </p>
+
+  <section>
+    <h3>1. ngListbox on its own</h3>
+    <city-listbox />
+  </section>
+
+  <section>
+    <h3>2. The same list with focusMode="activedescendant"</h3>
+    <city-listbox-ad />
+  </section>
+
+  <section>
+    <h3>3. A hand-written (keydown) handler on the same element</h3>
+    <p>
+      Press ArrowUp from the first row. The list wraps to the last row, the hand-written
+      index clamps at the first, and the two highlights end up on different rows.
+    </p>
+    <city-listbox-own-handler />
+  </section>
+
+  <section>
+    <h3>4. A hand-written (keydown) handler on a wrapper</h3>
+    <p>
+      It never sees the arrow keys, Home, End or any single character key, because the
+      listbox calls stopPropagation() on them. Escape still gets through.
+    </p>
+    <city-listbox-wrapper-handler />
+  </section>
+</main>
