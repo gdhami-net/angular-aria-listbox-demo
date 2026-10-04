@@ -56,6 +56,13 @@ describe('ngListbox keyboard and ARIA behaviour', () => {
     expect(activeIndex(fixture)).toBe(4);
   });
 
+  it('wraps past the last option too', async () => {
+    const fixture = await build();
+    await press(fixture, 'End');
+    await press(fixture, 'ArrowDown');
+    expect(activeIndex(fixture)).toBe(0);
+  });
+
   it('moves tabindex=0 with the active option (roving focus, the default)', async () => {
     const fixture = await build();
     expect(options(fixture).map((li) => li.getAttribute('tabindex'))).toEqual([
@@ -104,6 +111,15 @@ describe('ngListbox keyboard and ARIA behaviour', () => {
       'false',
     ]);
     expect(fixture.componentInstance.selected()).toEqual(['Dubai']);
+  });
+
+  it('selects with Space as well as Enter', async () => {
+    const fixture = await build();
+    await press(fixture, 'ArrowDown');
+    await press(fixture, 'ArrowDown');
+    await press(fixture, ' ');
+    expect(fixture.componentInstance.selected()).toEqual(['Manama']);
+    expect(options(fixture)[2].getAttribute('aria-selected')).toBe('true');
   });
 
   it('names the active option with aria-activedescendant in the other focus mode', async () => {

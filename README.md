@@ -28,8 +28,10 @@ and nothing else.
 | `End` / `Home` | the active option jumps to the last / first |
 | typing `m` | type-ahead jumps to `Manama` |
 | `ArrowUp` on the first option | wraps to the last (`wrap` defaults to `true`) |
+| `ArrowDown` on the last option | wraps to the first |
 | roving focus (the default) | `tabindex="0"` on the active option, `-1` on the rest, and no `aria-activedescendant` on the `<ul>` |
 | `Enter` with `selectionMode="explicit"` | `aria-selected="true"` on that option only, and the `value` model signal becomes `['Dubai']` |
+| `Space` with `selectionMode="explicit"` | selects the same way `Enter` does |
 | `focusMode="activedescendant"` | `aria-activedescendant` on the `<ul>` names the active option's id, and every option's `tabindex` is `-1` |
 
 `src/app/conflict.spec.ts` — what a hand-written `(keydown)` handler does once
@@ -48,7 +50,7 @@ never reaches an ancestor.
 
 ```
 npm install
-npm run check      # ng test --no-watch, the 11 assertions above
+npm run check      # ng test --no-watch, the 13 assertions above
 npm start          # http://localhost:4200, all four lists side by side
 ```
 
@@ -56,7 +58,7 @@ npm start          # http://localhost:4200, all four lists side by side
 
 ```
  Test Files  2 passed (2)
-      Tests  11 passed (11)
+      Tests  13 passed (13)
 ```
 
 ## Versions these numbers came from
